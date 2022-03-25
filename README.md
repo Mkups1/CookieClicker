@@ -1,1 +1,1 @@
-# CookieClicker
+# Muffin Masher
