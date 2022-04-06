@@ -20,8 +20,17 @@ ctx.fillStyle = "rgb(125, 50, 0)"
 ctx.fillRect(800, 25, 50, 775)
 
 ctx.font = "30px Arial"
-ctx.strokeStyle = "rgb(125, 50, 0)"
-ctx.strokeStyle = ("Muffins:", 50, 100)
+ctx.fillStyle = "rgb(125, 50, 0)"
+
+requestAnimationFrame(loop)
+
+function loop(){
+ ctx.fillStyle = "white"
+ ctx.fillRect(0, 75, 400, 250)
+ ctx.fillStyle = "rgb(125, 50, 0)"
+ ctx.fillText("Muffins:" + muffinAmount, 0, 150)
+ requestAnimationFrame(loop)
+}
 
 document.addEventListener("mousedown", moreMuffin)
 
