@@ -8,9 +8,14 @@ cnv.height = 850;
 let background = document.getElementById("background")
 let muffin = document.getElementById("muffin")
 let muffinAmount = 0
-let cursorUnlock = "rgb(225, 225, 225)"
-let bakerUnlock = "rgb(225, 225, 225)"
-let farmUnlock = "rgb(225, 225, 225)"
+let bakerColor = "grey"
+let cursorColor = "grey"
+let farmColor = "grey"
+let minecolor = "grey"
+let factoryColor = "grey"
+let bankColor = "grey"
+let templeColor = "grey"
+let 
 
 
 requestAnimationFrame(loop)
@@ -23,19 +28,33 @@ function loop(){
  ctx.font = "30px Arial"
  ctx.fillStyle = "rgb(125, 50, 0)"
  ctx.fillText("Muffins:" + muffinAmount, 25, 150)
- //  Draw things you can buy
+ //  Unlockables
  //  cursor
- ctx.fillStyle = "rgb(125,125,125)"
- ctx.fillRect(914, 374, 313, 50) 
- //  baker
- ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillStyle = cursorColor
  ctx.fillRect(914, 319, 313, 50) 
+ if (muffinAmount >= 15){
+    cursorColor = "white"
+ } else if (muffinAmount < 15)
+    cursorColor = "grey"
+ //  baker
+ ctx.fillStyle = bakerColor
+ ctx.fillRect(914, 374, 313, 50) 
+ if (muffinAmount >= 30){
+    bakerColor = "white"
+ } else if (muffinAmount < 30)
+ bakerColor = "grey"
  //  Farm
  ctx.fillStyle = "rgb(125,125,125)"
  ctx.fillRect(914, 429, 313, 50) 
  //  Mine
  ctx.fillStyle = "rgb(125,125,125)"
- ctx.fillRect(914, 484, 313, 50) 
+ ctx.fillRect(914, 484, 313, 50)
+ //  Factory
+ ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillRect(914, 539, 313, 50) 
+ //  Bank
+ ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillRect(914, 594, 313, 50) 
  requestAnimationFrame(loop)
 }
 
@@ -47,3 +66,4 @@ function moreMuffin(event) {
         console.log(muffinAmount)
     }
 }
+
