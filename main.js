@@ -7,15 +7,19 @@ cnv.height = 850;
 
 let background = document.getElementById("background")
 let muffin = document.getElementById("muffin")
+let baker = document.getElementById("baker")
 let muffinAmount = 0
 let bakerColor = "grey"
 let cursorColor = "grey"
 let farmColor = "grey"
-let minecolor = "grey"
+let mineColor = "grey"
 let factoryColor = "grey"
 let bankColor = "grey"
 let templeColor = "grey"
-let 
+let alchemyColor = "grey"
+let tMachineColor = "grey"
+let borderY = 369
+
 
 
 requestAnimationFrame(loop)
@@ -43,18 +47,66 @@ function loop(){
     bakerColor = "white"
  } else if (muffinAmount < 30)
  bakerColor = "grey"
+ ctx.drawImage(baker, 1150,375, 50, 50)
  //  Farm
- ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillStyle = farmColor
  ctx.fillRect(914, 429, 313, 50) 
+ if (muffinAmount >= 40){
+   farmColor = "white"
+ } else if (muffinAmount < 40)
+ farmColor = "grey"
  //  Mine
- ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillStyle = mineColor
  ctx.fillRect(914, 484, 313, 50)
+ if (muffinAmount >= 40){
+   mineColor = "white"
+ } else if (muffinAmount < 40)
+ mineColor = "grey"
  //  Factory
- ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillStyle = factoryColor
  ctx.fillRect(914, 539, 313, 50) 
+ if (muffinAmount >= 40){
+   factoryColor = "white"
+ } else if (muffinAmount < 40)
+ factoryColor = "grey"
  //  Bank
- ctx.fillStyle = "rgb(125,125,125)"
+ ctx.fillStyle = bankColor
  ctx.fillRect(914, 594, 313, 50) 
+ if (muffinAmount >= 40){
+   bankColor = "white"
+ } else if (muffinAmount < 40)
+ bankColor = "grey"
+ //  Temple
+ ctx.fillStyle = templeColor
+ ctx.fillRect(914, 649, 313, 50) 
+ if (muffinAmount >= 40){
+   templeColor = "white"
+ } else if (muffinAmount < 40)
+ templeColor = "grey"
+ // Alchemy Lab
+ ctx.fillStyle = alchemyColor
+ ctx.fillRect(914, 704, 313, 50)  
+ if (muffinAmount >= 40){
+   alchemyColor = "white"
+ } else if (muffinAmount < 40)
+ alchemyColor = "grey"
+ // Time Machine 
+ ctx.fillStyle = tMachineColor
+ ctx.fillRect(914, 759, 313, 50)  
+ if (muffinAmount >= 40){
+   tMachineColor = "white"
+ } else if (muffinAmount < 40)
+ tMachineColor = "grey"
+ //  Border
+ ctx.fillStyle = "black"
+ ctx.fillRect(914, 369, 313, 5)
+ ctx.fillRect(914, 424, 313, 5)
+ ctx.fillRect(914, 479, 313, 5)
+ ctx.fillRect(914, 534, 313, 5)
+ ctx.fillRect(914, 589, 313, 5)
+ ctx.fillRect(914, 644, 313, 5)
+ ctx.fillRect(914, 699, 313, 5)
+ ctx.fillRect(914, 754, 313, 5)
  requestAnimationFrame(loop)
 }
 
