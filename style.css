@@ -1,12 +1,25 @@
-div{
-    float: right;
-    height: 840px;
-    width: 67%;
+.main {
+    width: 800px;
+    margin: 50px auto;
+    background: brown;
+    padding: 20px;
 }
 
-img{
-    height: 100%;
-    width:100%;
+h1 {
+    text-align: center;
 }
 
+.content {
+    background: white;
+    display: flex;
+    
+}
 
+.content div {
+    flex: 1;
+    border: 10px solid brown;
+}
+
+.muffin{
+    height:400px;
+}

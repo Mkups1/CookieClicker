@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muffin masher</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muffin masher</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 
-    <canvas id="canvas"></canvas>
-
-    <img id="background-left" src="img/background-left.png" style="display:none">
-    <img id="muffin" src="img/Muffin.png" style="display:none">
-    <img id="baker" src="img/Baker.png" style="display:none">
-
-    <div>
-        <img id="background-right" src="img/background-right.png">
+  <div class="main">
+    <h1>Muffin Masher</h1>
+    <div class="content">
+      <div class="muffin">
+        Muffins:<span>0</span>
+        <img id="muffin" src="img/Muffin.png">
+      </div>
+      <div class="inventory">
+        Inventory
+      </div>
+      <div class="upgrade-container">
+        <div class="upgrades">
+          Upgrades
+        </div>
+        <div class="buildings">
+          Buildings
+        </div>
+      </div>
     </div>
-    
+  </div>
 
 
 
 
-    <script src="main.js"></script>
+
+  <script src="main.js"></script>
 
 
 </body>
+
 </html>
