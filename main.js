@@ -2,10 +2,10 @@
 
 let cnv = document.getElementById("canvas")
 let ctx = cnv.getContext("2d")
-cnv.width = 1250;
+cnv.width = 400;
 cnv.height = 850;
 
-let background = document.getElementById("background")
+let background = document.getElementById("background-left")
 let muffin = document.getElementById("muffin")
 let baker = document.getElementById("baker")
 let muffinAmount = 0
@@ -97,16 +97,7 @@ function loop(){
    tMachineColor = "white"
  } else if (muffinAmount < 40)
  tMachineColor = "grey"
- //  Border
- ctx.fillStyle = "black"
- ctx.fillRect(914, 369, 313, 5)
- ctx.fillRect(914, 424, 313, 5)
- ctx.fillRect(914, 479, 313, 5)
- ctx.fillRect(914, 534, 313, 5)
- ctx.fillRect(914, 589, 313, 5)
- ctx.fillRect(914, 644, 313, 5)
- ctx.fillRect(914, 699, 313, 5)
- ctx.fillRect(914, 754, 313, 5)
+ 
  requestAnimationFrame(loop)
 }
 
