@@ -5,20 +5,10 @@ let ctx = cnv.getContext("2d")
 cnv.width = 240;
 cnv.height = 300;
 
-let background = document.getElementById("background-left")
 let muffin = document.getElementById("muffin")
-let baker = document.getElementById("baker")
+let cursorDiv = document.getElementById("cursor")
 let muffinAmount = 0
-let bakerColor = "grey"
-let cursorColor = "grey"
-let farmColor = "grey"
-let mineColor = "grey"
-let factoryColor = "grey"
-let bankColor = "grey"
-let templeColor = "grey"
-let alchemyColor = "grey"
-let tMachineColor = "grey"
-let borderY = 369
+
 
 
 
@@ -39,7 +29,7 @@ function loop(){
 
 window.setInterval(
   function muffinSec(){
-    muffinAmount = muffinAmount + 1
+    muffinAmount++
   }, 1000);
 
 
@@ -51,4 +41,10 @@ function moreMuffin(event) {
         console.log(muffinAmount)
     }
 }
+
+if(muffinAmount >= 100){
+  cursorDiv = "white"
+}
+
+
 

@@ -57,3 +57,13 @@ h1 {
     flex: 1;
 }
 
+.baker{
+    background:grey;
+    display: flex;
+    flex: 1;
+}
+#baker{
+    width:60px;
+    height:60px;
+}
+
