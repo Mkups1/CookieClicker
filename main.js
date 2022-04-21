@@ -6,8 +6,10 @@ cnv.width = 240;
 cnv.height = 300;
 
 let muffin = document.getElementById("muffin")
-let cursorDiv = document.getElementsByClassName("cursor")
+let cursorDiv = document.getElementById("cursor-div")
+let cursorFloat = document.getElementById("cursor-float")
 let muffinAmount = 0
+let cursorAmount = 0
 
 
 
@@ -30,19 +32,30 @@ function loop(){
 window.setInterval(
   function muffinSec(){
     muffinAmount++
+    if (muffinAmount >= 100){
+      cursorDiv.style.background="white"
+    }
     console.log(muffinAmount)
   }, 1000);
 
 
 document.addEventListener("mousedown", moreMuffin)
+document.getElementById("cursor-div").addEventListener("mousedown", moreCursor)
 
 function moreMuffin(event) {
     if (event.x - cnv.getBoundingClientRect().x >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
         muffinAmount++
+        if (muffinAmount >= 100){
+          cursorDiv.style.background="white"
+        }
         console.log(muffinAmount)
     }
 }
 
-if (muffinAmount >= 10){
-  cursorDiv.style.backgroundColor="white"
+function moreCursor() {
+  if (muffinAmount >=100)
+  muffinAmount-100
+  cursorAmount++
+  console.log(cursorAmount)
+  ctx.drawImage(cursorFloat, 0, 50)
 }

@@ -51,7 +51,7 @@ h1 {
     height:50px;
 }
 
-.cursor{
+#cursor-div{
     background:grey;
     display: flex;
     flex: 1;
@@ -67,3 +67,7 @@ h1 {
     height:60px;
 }
 
+#cursor-float{
+    width:0px;
+    height:0px;
+}
