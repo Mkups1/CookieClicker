@@ -6,7 +6,7 @@ cnv.width = 240;
 cnv.height = 300;
 
 let muffin = document.getElementById("muffin")
-let cursorDiv = document.getElementById("cursor")
+let cursorDiv = document.getElementsByClassName("cursor")
 let muffinAmount = 0
 
 
@@ -30,6 +30,7 @@ function loop(){
 window.setInterval(
   function muffinSec(){
     muffinAmount++
+    console.log(muffinAmount)
   }, 1000);
 
 
@@ -42,9 +43,6 @@ function moreMuffin(event) {
     }
 }
 
-if(muffinAmount >= 100){
-  cursorDiv = "white"
+if (muffinAmount >= 10){
+  cursorDiv.style.backgroundColor="white"
 }
-
-
-
