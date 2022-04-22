@@ -57,7 +57,7 @@ h1 {
     flex: 1;
 }
 
-.baker{
+#baker-div{
     background:grey;
     display: flex;
     flex: 1;
@@ -67,7 +67,4 @@ h1 {
     height:60px;
 }
 
-#cursor-float{
-    width:0px;
-    height:0px;
-}
+

@@ -14,6 +14,7 @@ let cursorAmount = 0
 
 
 
+
 requestAnimationFrame(loop)
 
 function loop(){
@@ -40,22 +41,26 @@ window.setInterval(
 
 
 document.addEventListener("mousedown", moreMuffin)
-document.getElementById("cursor-div").addEventListener("mousedown", moreCursor)
+document.getElementById("cursor-div").addEventListener("mousedown", moreBuilding,)
+
 
 function moreMuffin(event) {
     if (event.x - cnv.getBoundingClientRect().x >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
         muffinAmount++
-        if (muffinAmount >= 100){
+        if (muffinAmount >= 10){
           cursorDiv.style.background="white"
         }
         console.log(muffinAmount)
     }
 }
 
-function moreCursor() {
-  if (muffinAmount >=100)
-  muffinAmount-100
+
+function moreBuilding() {
+  if (muffinAmount >=10) {
+  muffinAmount -= 10
   cursorAmount++
   console.log(cursorAmount)
-  ctx.drawImage(cursorFloat, 0, 50)
-}
+  ctx.drawImage(cursorFloat, 150, 250, 25, 25)
+  }
+} 
+
