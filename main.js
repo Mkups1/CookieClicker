@@ -33,8 +33,10 @@ function loop(){
 window.setInterval(
   function muffinSec(){
     muffinAmount++
-    if (muffinAmount >= 100){
+    if (muffinAmount >= 10){
       cursorDiv.style.background="white"
+    } else if (muffinAmount <= 10){
+      cursorDiv.style.background="grey"
     }
     console.log(muffinAmount)
   }, 1000);
@@ -49,7 +51,7 @@ function moreMuffin(event) {
         muffinAmount++
         if (muffinAmount >= 10){
           cursorDiv.style.background="white"
-        }
+        } 
         console.log(muffinAmount)
     }
 }
