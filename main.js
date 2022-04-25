@@ -11,7 +11,16 @@ let cursorFloat = document.getElementById("cursor-float")
 let muffinAmount = 0
 let cursorAmount = 0
 
+let dx = 100 * Math.sin(angle)
+let dy = 100 * Math.cos(angle)
+let angle = 60
 
+
+window.setInterval(
+  function angleChange(){
+    angle++
+    console.log(angle)
+  }, 1000);
 
 
 
@@ -37,9 +46,7 @@ window.setInterval(
     muffinAmount++
     if (muffinAmount >= 10){
       cursorDiv.style.background="white"
-    } else if (muffinAmount <= 10){
-      cursorDiv.style.background="grey"
-    }
+    } 
     console.log(muffinAmount)
   }, 1000);
 
@@ -65,6 +72,8 @@ function moreBuilding() {
   cursorAmount++
   console.log(cursorAmount)
   ctx.drawImage(cursorFloat, 150, 250, 25, 25)
+  } if (muffinAmount <= 10) {
+    cursorDiv.style.background="grey"
   }
 } 
 
