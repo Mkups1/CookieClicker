@@ -11,15 +11,15 @@ let cursorFloat = document.getElementById("cursor-float")
 let muffinAmount = 0
 let cursorAmount = 0
 
-let insideDotX = 120
-let insideDotY = 150
+let insideDotX = 90
+let insideDotY = 170
 
 let angle = 0
 
 let cursorX, cursorY
 
-let distance = 50
-document.getElementById("cursor-div").addEventListener("mousedown", loop)
+let distance = 100
+
 
 
 requestAnimationFrame(loop)
@@ -33,18 +33,14 @@ function loop(){
  ctx.font = "30px Arial"
  ctx.fillStyle = "rgb(125, 50, 0)"
  ctx.fillText("Muffins:" + muffinAmount, 25, 50)
- // Draw cursor spinning 
- document.getElementById("cursor-div").addEventListener("mousedown", moreBuilding)
- function moreBuilding() {
-   if (muffinAmount >=10) {
-    muffinAmount -= 10
-    cursorAmount++
-    console.log(cursorAmount)
-    ctx.drawImage(cursorFloat, 150, 250, 25, 25)
-   } if (muffinAmount <= 10) {
-     cursorDiv.style.background="grey"
-   }
-  }
+ // Draw cursor 
+ if (cursorAmount >= 1) {
+   ctx.drawImage(cursorFloat, cursorX, cursorY, 25, 25)
+ }
+ // Draw cursor spinning
+ cursorX = insideDotX + (distance * Math.cos((angle - 90) * Math.PI / 180))
+ cursorY = insideDotY + (distance * Math.sin((angle - 90) * Math.PI / 180))
+ angle++
  requestAnimationFrame(loop)
 }
 
@@ -74,4 +70,15 @@ function moreMuffin(event) {
 }
 
 
+document.getElementById("cursor-div").addEventListener("mousedown", moreBuilding)
 
+function moreBuilding() {
+  if (muffinAmount >=10) {
+   muffinAmount -= 10
+   cursorAmount++
+   console.log(cursorAmount)
+   
+  } if (muffinAmount <= 10) {
+    cursorDiv.style.background="grey"
+  }
+ }

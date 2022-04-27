@@ -66,5 +66,22 @@ h1 {
     width:60px;
     height:60px;
 }
-
+#bakery{
+    width:60px;
+    height:60px;
+}
+#bakery-div{
+    background:grey;
+    display:flex;
+    flex:1;
+}
+#farm{
+    width:60px;
+    height:60px;
+}
+#farm-div{
+    background:grey;
+    display:flex;
+    flex:1;
+}
 
