@@ -8,8 +8,10 @@ cnv.height = 300;
 let muffin = document.getElementById("muffin")
 let cursorDiv = document.getElementById("cursor-div")
 let cursorFloat = document.getElementById("cursor-float")
+let bakerDiv = document.getElementById("baker-div")
 let muffinAmount = 0
 let cursorAmount = 0
+let bakerAmount = 0
 
 let insideDotX = 90
 let insideDotY = 170
@@ -49,7 +51,9 @@ window.setInterval(
     muffinAmount++
     if (muffinAmount >= 10){
       cursorDiv.style.background="white"
-    } 
+    } if (muffinAmount >= 100){
+      bakerDiv.style.background="white"
+    }
     console.log(muffinAmount)
   }, 1000);
 
@@ -64,15 +68,18 @@ function moreMuffin(event) {
         muffinAmount++
         if (muffinAmount >= 10){
           cursorDiv.style.background="white"
-        } 
+        } if (muffinAmount >= 100){
+          bakerDiv.style.background="white"
+        }
         console.log(muffinAmount)
     }
 }
 
 
-document.getElementById("cursor-div").addEventListener("mousedown", moreBuilding)
+document.getElementById("cursor-div").addEventListener("mousedown", moreCursor)
+document.getElementById("baker-div").addEventListener("mousedown", moreBaker)
 
-function moreBuilding() {
+function moreCursor() {
   if (muffinAmount >=10) {
    muffinAmount -= 10
    cursorAmount++
@@ -80,5 +87,16 @@ function moreBuilding() {
    
   } if (muffinAmount <= 10) {
     cursorDiv.style.background="grey"
+  }
+ }
+
+ function moreBaker() {
+  if (muffinAmount >=100) {
+   muffinAmount -= 100
+   bakerAmount++
+   console.log(bakerAmount)
+   
+  } if (muffinAmount <= 100) {
+    bakerDiv.style.background="grey"
   }
  }
