@@ -13,12 +13,14 @@ let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
 
+let cursorAngles = []
 let insideDotX = 90
 let insideDotY = 170
 
 let angle = 0
 
-let cursorX, cursorY
+let cursorX = []
+let cursorY = []
 
 let distance = 100
 
@@ -38,18 +40,24 @@ function loop(){
  // Draw cursor 
  if (cursorAmount >= 1) {
    ctx.drawImage(cursorFloat, cursorX, cursorY, 25, 25)
- }
+  } if (muffinAmount <= 10) {
+    cursorDiv.style.background="grey"
+  }
  // Draw cursor spinning
- cursorX = insideDotX + (distance * Math.cos((angle - 90) * Math.PI / 180))
- cursorY = insideDotY + (distance * Math.sin((angle - 90) * Math.PI / 180))
- angle++
+ for(let n=0; n < cursorAngles.length; n++) {
+   cursorAngles[n] ++
+   cursorX[n] = insideDotX + (distance * Math.cos((cursorAngles[n] - 90) * Math.PI / 180))
+   cursorY[n] = insideDotY + (distance * Math.sin((cursorAngles[n] - 90) * Math.PI / 180))
+   ctx.drawImage(cursorFloat, cursorX[n], cursorY[n], 25, 25)
+ }
  requestAnimationFrame(loop)
 }
 
 window.setInterval(
   function muffinSec(){
     muffinAmount++
-    if (muffinAmount >= 10){
+    muffinAmount += cursorAmount
+    if (muffinAmount >= 10 * cursorAmount + 10){
       cursorDiv.style.background="white"
     } if (muffinAmount >= 100){
       bakerDiv.style.background="white"
@@ -66,7 +74,7 @@ document.addEventListener("mousedown", moreMuffin)
 function moreMuffin(event) {
     if (event.x - cnv.getBoundingClientRect().x >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
         muffinAmount++
-        if (muffinAmount >= 10){
+        if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
         } if (muffinAmount >= 100){
           bakerDiv.style.background="white"
@@ -80,12 +88,22 @@ document.getElementById("cursor-div").addEventListener("mousedown", moreCursor)
 document.getElementById("baker-div").addEventListener("mousedown", moreBaker)
 
 function moreCursor() {
-  if (muffinAmount >=10) {
-   muffinAmount -= 10
+  if (muffinAmount >= 10 * cursorAmount + 10) {
+   muffinAmount -= 10 * cursorAmount + 10
+   if (cursorAmount > 0) {
+    cursorAngles.push(cursorAngles[cursorAngles.length - 1] - 190)
+    cursorX.push(cursorX[cursorX.length -1] - 15)
+    cursorY.push(cursorX[cursorY.length -1] - 15)
+   } else  {
+     cursorAngles.push(15)
+     cursorX.push(15)
+     cursorY.push(15)
+   }
    cursorAmount++
+
    console.log(cursorAmount)
    
-  } if (muffinAmount <= 10) {
+  } if (muffinAmount <= 10 * cursorAmount + 10) {
     cursorDiv.style.background="grey"
   }
  }
