@@ -41,10 +41,6 @@ function loop(){
  ctx.fillText("Muffins:" + muffinAmount, 25, 50)
  ctx.save()
 //  ctx.translate(cnv.width/2, cnv.height/2)
- // Draw cursor 
-  if (muffinAmount <= 10) {
-    cursorDiv.style.background="grey"
-  }
  // Draw cursor spinning
  for(let n=0; n < cursorAngles.length; n++) {
     cursorX[n] = insideDotX + (distance * Math.cos((cursorAngles[n] - 90) * Math.PI / 180))
@@ -69,7 +65,7 @@ window.setInterval(
     muffinAmount += bakerAmount * 10
     if (muffinAmount >= 10 * cursorAmount + 10){
       cursorDiv.style.background="white"
-    } if (muffinAmount >= 100 * bakerAmount + 100){
+    } if (muffinAmount >= 10 * bakerAmount + 10){
       bakerDiv.style.background="white"
     } 
     console.log(muffinAmount)
@@ -86,7 +82,7 @@ function moreMuffin(event) {
         muffinAmount++
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
-        } if (muffinAmount >= 100 * bakerAmount + 100){
+        } if (muffinAmount >= 10 * bakerAmount + 10){
           bakerDiv.style.background="white"
         }
         console.log(muffinAmount)
@@ -115,19 +111,19 @@ function moreCursor() {
    
   } if (muffinAmount <= 10 * cursorAmount + 10) {
     cursorDiv.style.background="grey"
-  } if (muffinAmount <= 100 * bakerAmount + 100) {
+  } if (muffinAmount <= 10 * bakerAmount + 10) {
     bakerDiv.style.background="grey"
   }
  }
  
 //  baker
  function moreBaker() {
-  if (muffinAmount >=100 * bakerAmount + 100) {
-   muffinAmount -= 100 * bakerAmount + 100
+  if (muffinAmount >=10 * bakerAmount + 10) {
+   muffinAmount -= 10 * bakerAmount + 10
    bakerAmount++
    console.log(bakerAmount)
    
-  } if (muffinAmount <= 100 * bakerAmount + 100) {
+  } if (muffinAmount <= 10 * bakerAmount + 10) {
     bakerDiv.style.background="grey"
   }
  }
