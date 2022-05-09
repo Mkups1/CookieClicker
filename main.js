@@ -45,10 +45,6 @@ function loop(){
  for(let n=0; n < cursorAngles.length; n++) {
     cursorX[n] = insideDotX + (distance * Math.cos((cursorAngles[n] - 90) * Math.PI / 180))
     cursorY[n] = insideDotY + (distance * Math.sin((cursorAngles[n] - 90) * Math.PI / 180))
-    ctx.translate(cursorX + 12.5, cursorY + 12.5)
-    ctx.fillRect(cursorX - 120, cursorY - 150, 10, 10)
-    ctx.rotate(cursorAngles[n] * Math.PI/180)
-    ctx.translate( -cursorX + 12.5, -cursorY + 12.5)
     ctx.drawImage(cursorFloat, cursorX[n], cursorY[n], 25, 25)
     cursorAngles[n] ++
  }
