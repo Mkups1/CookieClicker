@@ -47,8 +47,8 @@ function loop(){
     cursorY[n] = insideDotY + (distance * Math.sin((cursorAngles[n] - 90) * Math.PI / 180))
     ctx.save()
     ctx.translate(cursorX[n] + 12.5, cursorY[n] + 12.5)
-    ctx.rotate(cursorAngles[n] * Math.PI / 180)
-    ctx.drawImage(cursorFloat, cursorX[n] - 12.5, cursorY[n] - 12.5, 25, 25)
+    ctx.rotate((cursorAngles[n] + 180) * Math.PI / 180)
+    ctx.drawImage(cursorFloat, -12.5, -12.5, 25, 25)
     ctx.restore()
     cursorAngles[n] ++
  }
@@ -98,7 +98,7 @@ function moreCursor() {
    if (cursorAmount > 0) {
     cursorAngles.push(cursorAngles[cursorAngles.length - 1] - 190)
     cursorX.push(cursorX[cursorX.length -1] - 15)
-    cursorY.push(cursorX[cursorY.length -1] - 15)
+    cursorY.push(cursorY[cursorY.length -1] - 15)
    } else  {
      cursorAngles.push(15)
      cursorX.push(15)
