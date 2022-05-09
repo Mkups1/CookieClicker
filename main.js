@@ -13,7 +13,7 @@ let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
 let displayCursorNum = document.getElementById("cursors")
-
+let displayBakerNum = document.getElementById("bakers")
 
 let cursorAngles = []
 let insideDotX = 90
@@ -39,16 +39,19 @@ function loop(){
  ctx.font = "30px Arial"
  ctx.fillStyle = "rgb(125, 50, 0)"
  ctx.fillText("Muffins:" + muffinAmount, 25, 50)
- ctx.save()
+
 //  ctx.translate(cnv.width/2, cnv.height/2)
  // Draw cursor spinning
  for(let n=0; n < cursorAngles.length; n++) {
     cursorX[n] = insideDotX + (distance * Math.cos((cursorAngles[n] - 90) * Math.PI / 180))
     cursorY[n] = insideDotY + (distance * Math.sin((cursorAngles[n] - 90) * Math.PI / 180))
-    ctx.drawImage(cursorFloat, cursorX[n], cursorY[n], 25, 25)
+    ctx.save()
+    ctx.translate(cursorX[n] + 12.5, cursorY[n] + 12.5)
+    ctx.rotate(cursorAngles[n] * Math.PI / 180)
+    ctx.drawImage(cursorFloat, cursorX[n] - 12.5, cursorY[n] - 12.5, 25, 25)
+    ctx.restore()
     cursorAngles[n] ++
  }
- ctx.restore()
  requestAnimationFrame(loop)
 }
 
@@ -61,7 +64,7 @@ window.setInterval(
     muffinAmount += bakerAmount * 10
     if (muffinAmount >= 10 * cursorAmount + 10){
       cursorDiv.style.background="white"
-    } if (muffinAmount >= 10 * bakerAmount + 10){
+    } if (muffinAmount >= 100 * bakerAmount + 100){
       bakerDiv.style.background="white"
     } 
     console.log(muffinAmount)
@@ -78,7 +81,7 @@ function moreMuffin(event) {
         muffinAmount++
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
-        } if (muffinAmount >= 10 * bakerAmount + 10){
+        } if (muffinAmount >= 100 * bakerAmount + 100){
           bakerDiv.style.background="white"
         }
         console.log(muffinAmount)
@@ -107,19 +110,21 @@ function moreCursor() {
    
   } if (muffinAmount <= 10 * cursorAmount + 10) {
     cursorDiv.style.background="grey"
-  } if (muffinAmount <= 10 * bakerAmount + 10) {
+  } if (muffinAmount <= 100 * bakerAmount + 100) {
     bakerDiv.style.background="grey"
   }
  }
  
 //  baker
  function moreBaker() {
-  if (muffinAmount >=10 * bakerAmount + 10) {
-   muffinAmount -= 10 * bakerAmount + 10
+  if (muffinAmount >=100 * bakerAmount + 100) {
+   muffinAmount -= 100 * bakerAmount + 100
    bakerAmount++
    console.log(bakerAmount)
    
-  } if (muffinAmount <= 10 * bakerAmount + 10) {
+  } 
+  displayBakerNum.innerHTML = bakerAmount
+  if (muffinAmount <= 100 * bakerAmount + 100) {
     bakerDiv.style.background="grey"
   }
  }

@@ -112,3 +112,17 @@ h1 {
     color:black;
 }
 
+#cursor-inventory{
+    width:60px;
+    height:60px;
+}
+#cursors{
+    font-size:60px;
+}
+#baker-inventory{
+    width:60px;
+    height:60px;
+}
+#bakers{
+    font-size:60px;
+}
