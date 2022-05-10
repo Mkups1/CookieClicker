@@ -9,11 +9,21 @@ let muffin = document.getElementById("muffin")
 let cursorDiv = document.getElementById("cursor-div")
 let cursorFloat = document.getElementById("cursor-float")
 let bakerDiv = document.getElementById("baker-div")
+let bakeryDiv = document.getElementById("bakery-div")
+let farmDiv = document.getElementById("farm-div")
+let factoryDiv = document.getElementById("factory-div")
 let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
+let bakeryAmount = 0
+let farmAmount = 0
+let factoryAmount = 0
 let displayCursorNum = document.getElementById("cursors")
 let displayBakerNum = document.getElementById("bakers")
+let displayBakeryNum = document.getElementById("bakeries")
+let displayFarmNum = document.getElementById("farms")
+let displayFactoryNum = document.getElementById("factories")
+
 
 let cursorAngles = []
 let insideDotX = 90
@@ -62,11 +72,24 @@ window.setInterval(
     muffinAmount++
     muffinAmount += cursorAmount
     muffinAmount += bakerAmount * 10
+    muffinAmount += bakeryAmount * 50
+    muffinAmount += farmAmount * 100
+    muffinAmount += factoryAmount * 500
     if (muffinAmount >= 10 * cursorAmount + 10){
       cursorDiv.style.background="white"
-    } if (muffinAmount >= 100 * bakerAmount + 100){
+    } 
+    if (muffinAmount >= 100 * bakerAmount + 100){
       bakerDiv.style.background="white"
     } 
+    if (muffinAmount >= 500 * bakeryAmount + 500){
+      bakeryDiv.style.background="white"
+    }
+    if (muffinAmount >= 1000 * farmAmount + 1000){
+      farmDiv.style.background="white"
+    }
+    if (muffinAmount >= 5000 * factoryAmount + 5000){
+      factoryDiv.style.background="white"
+    }
     console.log(muffinAmount)
   }, 1000);
 
@@ -81,8 +104,18 @@ function moreMuffin(event) {
         muffinAmount++
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
-        } if (muffinAmount >= 100 * bakerAmount + 100){
+        } 
+        if (muffinAmount >= 100 * bakerAmount + 100){
           bakerDiv.style.background="white"
+        }
+        if (muffinAmount >= 500 * bakeryAmount + 500){
+          bakeryDiv.style.background="white"
+        }
+        if (muffinAmount >= 1000 * farmAmount + 1000){
+          farmDiv.style.background="white"
+        }
+        if (muffinAmount >= 5000 * factoryAmount + 5000){
+          factoryDiv.style.background="white"
         }
         console.log(muffinAmount)
     }
@@ -91,6 +124,9 @@ function moreMuffin(event) {
 // Make buildings go up on click
 document.getElementById("cursor-div").addEventListener("mousedown", moreCursor)
 document.getElementById("baker-div").addEventListener("mousedown", moreBaker)
+document.getElementById("bakery-div").addEventListener("mousedown", moreBakery)
+document.getElementById("farm-div").addEventListener("mousedown", morefarm)
+document.getElementById("factory-div").addEventListener("mousedown", morefactory)
 // cursor
 function moreCursor() {
   if (muffinAmount >= 10 * cursorAmount + 10) {
@@ -110,21 +146,119 @@ function moreCursor() {
    
   } if (muffinAmount <= 10 * cursorAmount + 10) {
     cursorDiv.style.background="grey"
-  } if (muffinAmount <= 100 * bakerAmount + 100) {
-    bakerDiv.style.background="grey"
-  }
- }
- 
-//  baker
- function moreBaker() {
-  if (muffinAmount >=100 * bakerAmount + 100) {
-   muffinAmount -= 100 * bakerAmount + 100
-   bakerAmount++
-   console.log(bakerAmount)
-   
   } 
-  displayBakerNum.innerHTML = bakerAmount
   if (muffinAmount <= 100 * bakerAmount + 100) {
     bakerDiv.style.background="grey"
   }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+  farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+}
+//  baker
+function moreBaker() {
+  if (muffinAmount >=100 * bakerAmount + 100) {
+    muffinAmount -= 100 * bakerAmount + 100
+    bakerAmount++
+    console.log(bakerAmount)
+   
+  } 
+  displayBakerNum.innerHTML = bakerAmount
+  if (muffinAmount <= 10 * cursorAmount + 10) {
+    cursorDiv.style.background="grey"
+  } 
+  if (muffinAmount <= 100 * bakerAmount + 100) {
+    bakerDiv.style.background="grey"
+  }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+    farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+}
+//  bakery
+function moreBakery() {
+  if (muffinAmount >= 500 * bakeryAmount + 500) {
+    muffinAmount -= 500 * bakeryAmount + 500
+    bakeryAmount++
+    console.log(bakeryAmount)
+   
+  } 
+  displayBakeryNum.innerHTML = bakeryAmount
+  if (muffinAmount <= 10 * cursorAmount + 10) {
+    cursorDiv.style.background="grey"
+  } 
+  if (muffinAmount <= 100 * bakerAmount + 100) {
+    bakerDiv.style.background="grey"
+  }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+    farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+}
+
+//  farm
+function morefarm() {
+  if (muffinAmount >= 1000 * farmAmount + 1000) {
+    muffinAmount -= 1000 * farmAmount + 1000
+    farmAmount++
+    console.log(farmAmount)
+   
+  } 
+  displayFarmNum.innerHTML = farmAmount
+  if (muffinAmount <= 10 * cursorAmount + 10) {
+    cursorDiv.style.background="grey"
+  } 
+  if (muffinAmount <= 100 * bakerAmount + 100) {
+    bakerDiv.style.background="grey"
+  }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+    farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+}
+
+//  factory
+function morefactory() {
+  if (muffinAmount >= 5000 * factoryAmount + 5000) {
+    muffinAmount -= 5000 * factoryAmount + 5000
+    factoryAmount++
+    console.log(factoryAmount)
+   
+  } 
+  displayFactoryNum.innerHTML = factoryAmount
+  if (muffinAmount <= 10 * cursorAmount + 10) {
+    cursorDiv.style.background="grey"
+  } 
+  if (muffinAmount <= 100 * bakerAmount + 100) {
+    bakerDiv.style.background="grey"
+  }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+    farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+}

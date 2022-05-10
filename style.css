@@ -59,18 +59,27 @@ h1 {
     height:75px;
     overflow-y:scroll;
 }
+/* cursor */
 #cursor{
     width:50px;
     height:50px;
 }
-
 #cursor-div{
     background:grey;
     display: flex;
     flex: 1;
     color: black;
 }
+#cursor-inventory{
+    width:60px;
+    height:60px;
+}
+#cursors{
+    font-size:60px;
+}
 
+
+/* baker */
 #baker-div{
     background:grey;
     display: flex;
@@ -81,6 +90,15 @@ h1 {
     width:60px;
     height:60px;
 }
+#baker-inventory{
+    width:60px;
+    height:60px;
+}
+#bakers{
+    font-size:60px;
+}
+
+/* bakery */
 #bakery{
     width:60px;
     height:60px;
@@ -91,6 +109,15 @@ h1 {
     flex:1;
     color: black;
 }
+#bakery-inventory{
+    width:60px;
+    height:60px;
+}
+#bakeries{
+    font-size:60px;
+}
+
+/* farm */
 #farm{
     width:60px;
     height:60px;
@@ -101,6 +128,15 @@ h1 {
     flex:1;
     color: black;
 }
+#farm-inventory{
+    width:60px;
+    height:60px;
+}
+#farms{
+    font-size:60px;
+}
+
+/* factory */
 #factory{
     width:60px;
     height:60px;
@@ -111,18 +147,11 @@ h1 {
     flex:1;
     color:black;
 }
+#factory-inventory{
+    width:60px;
+    height:60px;
+}
+#factories{
+    font-size:60px;
+}
 
-#cursor-inventory{
-    width:60px;
-    height:60px;
-}
-#cursors{
-    font-size:60px;
-}
-#baker-inventory{
-    width:60px;
-    height:60px;
-}
-#bakers{
-    font-size:60px;
-}
