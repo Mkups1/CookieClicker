@@ -155,3 +155,22 @@ h1 {
     font-size:60px;
 }
 
+/* Bank */
+#bank{
+    width:60px;
+    height:60px;
+}
+#bank-div{
+    background: grey;
+    display:flex;
+    flex:1;
+    color:black;
+}
+#bank-inventory{
+    width:60px;
+    height:60px;
+}
+#banks{
+    font-size:60px;
+}
+

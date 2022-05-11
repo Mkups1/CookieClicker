@@ -2,7 +2,7 @@
 
 let cnv = document.getElementById("canvas")
 let ctx = cnv.getContext("2d")
-cnv.width = 240;
+cnv.width = 245;
 cnv.height = 300;
 
 let muffin = document.getElementById("muffin")
@@ -12,21 +12,24 @@ let bakerDiv = document.getElementById("baker-div")
 let bakeryDiv = document.getElementById("bakery-div")
 let farmDiv = document.getElementById("farm-div")
 let factoryDiv = document.getElementById("factory-div")
+let bankDiv = document.getElementById("bank-div")
 let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
 let bakeryAmount = 0
 let farmAmount = 0
 let factoryAmount = 0
+let bankAmount = 0
 let displayCursorNum = document.getElementById("cursors")
 let displayBakerNum = document.getElementById("bakers")
 let displayBakeryNum = document.getElementById("bakeries")
 let displayFarmNum = document.getElementById("farms")
 let displayFactoryNum = document.getElementById("factories")
+let displayBankNum = document.getElementById("banks")
 
 
 let cursorAngles = []
-let insideDotX = 90
+let insideDotX = 110
 let insideDotY = 170
 
 let angle = 0
@@ -44,7 +47,7 @@ function loop(){
  //  Draw background and muffin 
  ctx.fillStyle = "white"
  ctx.fillRect(0, 0, 240, 300)
- ctx.drawImage(muffin, 0, 100)
+ ctx.drawImage(muffin, 20, 100)
  // Draw muffin amount 
  ctx.font = "30px Arial"
  ctx.fillStyle = "rgb(125, 50, 0)"
@@ -75,6 +78,7 @@ window.setInterval(
     muffinAmount += bakeryAmount * 50
     muffinAmount += farmAmount * 100
     muffinAmount += factoryAmount * 500
+    muffinAmount += bankAmount * 1000
     if (muffinAmount >= 10 * cursorAmount + 10){
       cursorDiv.style.background="white"
     } 
@@ -89,6 +93,9 @@ window.setInterval(
     }
     if (muffinAmount >= 5000 * factoryAmount + 5000){
       factoryDiv.style.background="white"
+    }
+    if (muffinAmount >= 10000 * bankAmount + 10000){
+      bankDiv.style.background="white"
     }
     console.log(muffinAmount)
   }, 1000);
@@ -117,6 +124,9 @@ function moreMuffin(event) {
         if (muffinAmount >= 5000 * factoryAmount + 5000){
           factoryDiv.style.background="white"
         }
+        if (muffinAmount >= 10000 * bankAmount + 10000){
+          bankDiv.style.background="white"
+        }
         console.log(muffinAmount)
     }
 }
@@ -127,6 +137,8 @@ document.getElementById("baker-div").addEventListener("mousedown", moreBaker)
 document.getElementById("bakery-div").addEventListener("mousedown", moreBakery)
 document.getElementById("farm-div").addEventListener("mousedown", morefarm)
 document.getElementById("factory-div").addEventListener("mousedown", morefactory)
+document.getElementById("bank-div").addEventListener("mousedown", morebank)
+// Buildings section
 // cursor
 function moreCursor() {
   if (muffinAmount >= 10 * cursorAmount + 10) {
@@ -159,6 +171,9 @@ function moreCursor() {
   if (muffinAmount <= 5000 * factoryAmount + 5000){
     factoryDiv.style.background="grey"
   }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
+  }
 }
 //  baker
 function moreBaker() {
@@ -184,6 +199,9 @@ function moreBaker() {
   if (muffinAmount <= 5000 * factoryAmount + 5000){
     factoryDiv.style.background="grey"
   }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
+  }
 }
 //  bakery
 function moreBakery() {
@@ -208,6 +226,9 @@ function moreBakery() {
   }
   if (muffinAmount <= 5000 * factoryAmount + 5000){
     factoryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
   }
 }
 
@@ -235,6 +256,9 @@ function morefarm() {
   if (muffinAmount <= 5000 * factoryAmount + 5000){
     factoryDiv.style.background="grey"
   }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
+  }
 }
 
 //  factory
@@ -261,4 +285,40 @@ function morefactory() {
   if (muffinAmount <= 5000 * factoryAmount + 5000){
     factoryDiv.style.background="grey"
   }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
+  }
 }
+
+//  bank
+function morebank() {
+  if (muffinAmount >= 10000 * bankAmount + 10000) {
+    muffinAmount -= 10000 * bankAmount + 10000
+    bankAmount++
+    console.log(bankAmount)
+   
+  } 
+  displayBankNum.innerHTML = bankAmount
+  if (muffinAmount <= 10 * cursorAmount + 10) {
+    cursorDiv.style.background="grey"
+  } 
+  if (muffinAmount <= 100 * bakerAmount + 100) {
+    bakerDiv.style.background="grey"
+  }
+  if (muffinAmount <= 500 * bakeryAmount + 500) {
+    bakeryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 1000 * farmAmount + 1000){
+    farmDiv.style.background="grey"
+  }
+  if (muffinAmount <= 5000 * factoryAmount + 5000){
+    factoryDiv.style.background="grey"
+  }
+  if (muffinAmount <= 10000 * bankAmount + 10000){
+    bankDiv.style.background="grey"
+  }
+}
+
+// Upgrades section
+// Make upgrades bought on click
+document.getElementById("cursor-div").addEventListener("mousedown", moreCursorUp)
