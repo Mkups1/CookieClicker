@@ -26,6 +26,8 @@ let displayBakeryNum = document.getElementById("bakeries")
 let displayFarmNum = document.getElementById("farms")
 let displayFactoryNum = document.getElementById("factories")
 let displayBankNum = document.getElementById("banks")
+let cursorUpgrade = document.getElementById("cursor-upgrade")
+let cursorUpAmount = 1
 
 
 let cursorAngles = []
@@ -39,6 +41,7 @@ let cursorY = []
 
 let distance = 100
 
+let done = false
 
 
 requestAnimationFrame(loop)
@@ -65,6 +68,7 @@ function loop(){
     ctx.restore()
     cursorAngles[n] ++
  }
+  
  requestAnimationFrame(loop)
 }
 
@@ -73,7 +77,7 @@ function loop(){
 window.setInterval(
   function muffinSec(){
     muffinAmount++
-    muffinAmount += cursorAmount
+    muffinAmount += cursorAmount * cursorUpAmount
     muffinAmount += bakerAmount * 10
     muffinAmount += bakeryAmount * 50
     muffinAmount += farmAmount * 100
@@ -96,6 +100,11 @@ window.setInterval(
     }
     if (muffinAmount >= 10000 * bankAmount + 10000){
       bankDiv.style.background="white"
+    }
+    if (!done){
+      if (muffinAmount === 10) {
+        cursorUpgrade.style.display = "block"
+      }
     }
     console.log(muffinAmount)
   }, 1000);
@@ -126,6 +135,11 @@ function moreMuffin(event) {
         }
         if (muffinAmount >= 10000 * bankAmount + 10000){
           bankDiv.style.background="white"
+        }
+        if (!done){
+          if (muffinAmount === 10) {
+            cursorUpgrade.style.display = "block"
+          }
         }
         console.log(muffinAmount)
     }
@@ -321,4 +335,17 @@ function morebank() {
 
 // Upgrades section
 // Make upgrades bought on click
-document.getElementById("cursor-div").addEventListener("mousedown", moreCursorUp)
+document.getElementById("cursor-upgrade").addEventListener("mousedown", moreCursorUp)
+
+
+function moreCursorUp() {
+  if (!done){
+    if(muffinAmount >= 10) {
+      muffinAmount -= 10
+      cursorUpAmount++
+      done = true
+      cursorUpgrade.style.display = "none" 
+    }
+  }
+}
+
