@@ -13,6 +13,7 @@ let bakeryDiv = document.getElementById("bakery-div")
 let farmDiv = document.getElementById("farm-div")
 let factoryDiv = document.getElementById("factory-div")
 let bankDiv = document.getElementById("bank-div")
+let cursorCost = document.getElementById("cursor-cost")
 let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
@@ -102,7 +103,7 @@ window.setInterval(
       bankDiv.style.background="white"
     }
     if (!done){
-      if (muffinAmount === 10) {
+      if (muffinAmount >= 250) {
         cursorUpgrade.style.display = "block"
       }
     }
@@ -117,7 +118,7 @@ document.addEventListener("mousedown", moreMuffin)
 
 function moreMuffin(event) {
     if (event.x - cnv.getBoundingClientRect().x >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
-        muffinAmount++
+        muffinAmount += 1 * cursorUpAmount
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
         } 
@@ -137,10 +138,11 @@ function moreMuffin(event) {
           bankDiv.style.background="white"
         }
         if (!done){
-          if (muffinAmount === 10) {
+          if (muffinAmount >= 250) {
             cursorUpgrade.style.display = "block"
           }
         }
+
         console.log(muffinAmount)
     }
 }
@@ -157,6 +159,7 @@ document.getElementById("bank-div").addEventListener("mousedown", morebank)
 function moreCursor() {
   if (muffinAmount >= 10 * cursorAmount + 10) {
    muffinAmount -= 10 * cursorAmount + 10
+   cursorCost = 10 * cursorAmount + 10
    if (cursorAmount > 0) {
     cursorAngles.push(cursorAngles[cursorAngles.length - 1] - 190)
     cursorX.push(cursorX[cursorX.length -1] - 15)
@@ -187,6 +190,9 @@ function moreCursor() {
   }
   if (muffinAmount <= 10000 * bankAmount + 10000){
     bankDiv.style.background="grey"
+  }
+  if(muffinAmount < 250){
+  cursorUpgrade.style.display = "none" 
   }
 }
 //  baker
@@ -340,8 +346,8 @@ document.getElementById("cursor-upgrade").addEventListener("mousedown", moreCurs
 
 function moreCursorUp() {
   if (!done){
-    if(muffinAmount >= 10) {
-      muffinAmount -= 10
+    if(muffinAmount >= 250) {
+      muffinAmount -= 250
       cursorUpAmount++
       done = true
       cursorUpgrade.style.display = "none" 
