@@ -13,7 +13,6 @@ let bakeryDiv = document.getElementById("bakery-div")
 let farmDiv = document.getElementById("farm-div")
 let factoryDiv = document.getElementById("factory-div")
 let bankDiv = document.getElementById("bank-div")
-let cursorCost = document.getElementById("cursor-cost")
 let muffinAmount = 0
 let cursorAmount = 0
 let bakerAmount = 0
@@ -29,6 +28,20 @@ let displayFactoryNum = document.getElementById("factories")
 let displayBankNum = document.getElementById("banks")
 let cursorUpgrade = document.getElementById("cursor-upgrade")
 let cursorUpAmount = 1
+let cursorCostDisplay = document.getElementById("cursor-cost")
+let cursorCost = 10 * cursorAmount + 10
+let bakerCostDisplay = document.getElementById("baker-cost")
+let bakerCost = 100 * bakerAmount + 100
+let bakeryCostDisplay = document.getElementById("bakery-cost")
+let bakeryCost = 500 * bakeryAmount + 500
+let farmCostDisplay = document.getElementById("farm-cost")
+let farmCost = 1000 * farmAmount + 1000
+let factoryCostDisplay = document.getElementById("factory-cost")
+let factoryCost = 5000 * factoryAmount + 5000
+let bankCostDisplay = document.getElementById("bank-cost")
+let bankCost = 10000 * bankAmount + 10000
+
+
 
 
 let cursorAngles = []
@@ -69,6 +82,18 @@ function loop(){
     ctx.restore()
     cursorAngles[n] ++
  }
+   cursorCost = 10 * cursorAmount + 10
+   cursorCostDisplay.innerHTML = cursorCost
+   bakerCost = 100 * bakerAmount + 100
+   bakerCostDisplay.innerHTML = bakerCost
+   bakeryCost = 500 * bakeryAmount + 500
+   bakeryCostDisplay.innerHTML = bakeryCost
+   farmCost = 1000 * farmAmount + 1000
+   farmCostDisplay.innerHTML = farmCost
+   factoryCost = 5000 * factoryAmount + 5000
+   factoryCostDisplay.innerHTML = factoryCost
+   bankCost = 10000 * bankAmount + 10000
+   bankCostDisplay.innerHTML = bankCost
   
  requestAnimationFrame(loop)
 }
@@ -117,7 +142,7 @@ document.addEventListener("mousedown", moreMuffin)
 // When you click make the muffins go up
 
 function moreMuffin(event) {
-    if (event.x - cnv.getBoundingClientRect().x >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
+    if (event.x - cnv.getBoundingClientRect()  >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
         muffinAmount += 1 * cursorUpAmount
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
@@ -159,7 +184,6 @@ document.getElementById("bank-div").addEventListener("mousedown", morebank)
 function moreCursor() {
   if (muffinAmount >= 10 * cursorAmount + 10) {
    muffinAmount -= 10 * cursorAmount + 10
-   cursorCost = 10 * cursorAmount + 10
    if (cursorAmount > 0) {
     cursorAngles.push(cursorAngles[cursorAngles.length - 1] - 190)
     cursorX.push(cursorX[cursorX.length -1] - 15)
