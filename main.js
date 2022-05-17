@@ -142,7 +142,7 @@ document.addEventListener("mousedown", moreMuffin)
 // When you click make the muffins go up
 
 function moreMuffin(event) {
-    if (event.x - cnv.getBoundingClientRect()  >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
+    if (event.x - cnv.getBoundingClientRect().x  >= 20 && event.x - cnv.getBoundingClientRect().x <= 180 && event.y - cnv.getBoundingClientRect().y >= 110 && event.y - cnv.getBoundingClientRect().y <= 260) {
         muffinAmount += 1 * cursorUpAmount
         if (muffinAmount >= 10 * cursorAmount + 10){
           cursorDiv.style.background="white"
